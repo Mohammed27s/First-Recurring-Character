@@ -1,0 +1,30 @@
+import java.util.HashMap;
+
+public class DuplicateLetters {
+    public static HashMap<Character, Integer> findDuplicateLetters(String str) {
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        HashMap<Character, Integer> duplicates = new HashMap<>();
+
+        for (char ch : str.toCharArray()) {
+        
+            charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
+
+            
+            if (charCount.get(ch) > 1) {
+                duplicates.put(ch, charCount.get(ch));
+            }
+        }
+
+        return duplicates;
+    }
+
+    public static void main(String[] args) {
+        String inputStr = "balloon";
+        HashMap<Character, Integer> duplicateChars = findDuplicateLetters(inputStr);
+        
+        System.out.println("Duplicate letters in the string:");
+        for (char ch : duplicateChars.keySet()) {
+            System.out.println(ch + " - Count: " + duplicateChars.get(ch));
+        }
+    }
+}
